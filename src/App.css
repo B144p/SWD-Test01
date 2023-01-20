@@ -42,29 +42,3 @@
 
 
 
-
-
-
-.block{
-  width: 250px;
-  aspect-ratio: 2;
-  /* border: 5px solid #555; */
-  border-radius: 1vmin;
-  margin: 20px;
-  background: #fff;
-}
-
-.row > *{
-  display: inline-block;
-}
-.block > *{
-  width: 100%;
-  height: 100%;
-  /* aspect-ratio: 1; */
-  position: relative;
-  background-color: #777;
-}
-
-.block:hover{
-  background: #ffa200;
-}
