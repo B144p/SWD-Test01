@@ -1,34 +1,49 @@
-import Antd from './Antd'
-import './App.css'
-import Test from './Test'
-import Test_sw from './Test_sw'
+import './style/App.css'
+import { Link } from 'react-router-dom';
+import { useTranslation  } from 'react-i18next'
+
+import { Card, Space } from 'antd';
 
 function App() {
+  const {t, i18n} = useTranslation(['translation'])
 
-  // ##########################################################
-  // const shapeSection1 = shape.slice(0,3).map((item,index)=>{
-  //   <div className='block' key={index}>
-  //     <div style={{'clipPath': item.style}}></div>
-  //   </div>
-  // });
-  // const shapeSection2 = shape.slice(3).map((item,index)=>{
-  //   <div className='block' key={index}>
-  //     <div style={{'clipPath': item.style}}></div>
-  //   </div>
-  // });
-  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+  const clickChangeLng = (event: any) =>{   // assign any type
+    const lang = event.target.value;
+    i18n.changeLanguage(lang);    // change lang
+  }
+  
   return (
-    <div className="App">
-      {/* <Antd /> */}
-      <Test />
 
-      {/* <hr/> */}
+    <Space align='center' direction="vertical" size="middle" className='main-container'>
 
-      {/* <Test_sw /> */}
+      <select className='lng' onChange={clickChangeLng}>
+        <option value='en'>{t('eng')}</option>
+        <option value='th'>{t('thai')}</option>
+      </select>
+      
+      <Space direction="horizontal" size="middle" wrap className='card-width'>
+        <Link to='/test'>
+          <Card title={t('test_title1')} size="small" >
+            <p>{t('test_des1')}</p>
+          </Card>
+        </Link>
+        <Link to='/test'>
+          <Card title={t('test_title2')} size="small">
+            <p>{t('test_des2')}</p>
+          </Card>
+        </Link>
+        <Link to='/test'>
+          <Card title={t('test_title3')} size="small">
+            <p>{t('test_des3')}</p>
+          </Card>
+        </Link>
+      </Space>
 
-    </div>
+
+    </Space>
+    
   )
 }
 
 export default App
+
